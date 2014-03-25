@@ -14,7 +14,7 @@ class FactorialActor extends Actor {
   def factorial (n : Int) : Int = {
     n match {
       case a if a < 2 => a
-      case _@a => a + factorial(a - 1)
+      case _@a => a * factorial(a - 1)
     }
 
   }

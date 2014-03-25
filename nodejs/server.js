@@ -1,8 +1,17 @@
-var net = require('net');
+var http = require('http');
+var url = require('url');
+var calc = require('./factorial');
 
-var server = net.createServer(function (socket) {
-  socket.write('Echo server\r\n');
-  socket.pipe(socket);
-});
+http.createServer(function (request, response) {
+  var requestDetails = url.parse(request.url, true)
 
-server.listen(1337, '127.0.0.1');
+  console.log(requestDetails.pathname)
+  console.log(requestDetails.query)
+
+  if(requestDetails.pathname === '/factorial') {
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.end(calc.factorial(parseInt(requestDetails.query.param)).toString());
+  }
+}).listen(1337, '127.0.0.1');
+
+console.log('Server running at http://127.0.0.1:1337/');

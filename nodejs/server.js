@@ -5,9 +5,6 @@ var calc = require('./factorial');
 http.createServer(function (request, response) {
   var requestDetails = url.parse(request.url, true)
 
-  console.log(requestDetails.pathname)
-  console.log(requestDetails.query)
-
   if(requestDetails.pathname === '/factorial') {
     response.writeHead(200, {'Content-Type': 'text/plain'});
     response.end(calc.factorial(parseInt(requestDetails.query.param)).toString());

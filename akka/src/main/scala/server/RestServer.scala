@@ -11,32 +11,32 @@ import scala.concurrent.{ExecutionContext, duration}
 import java.util.concurrent.TimeUnit
 import ExecutionContext.Implicits.global
 import scala.util.Success
+import org.jboss.netty.channel.ChannelFutureListener
+import org.mashupbots.socko.events.HttpRequestEvent
 
 class RestServer {
 
   def run (args: Array[String]): Unit = {
     lazy val servicePort = ConfigFactory.load().getInt("service.port")
-    implicit val timeout = Timeout(50, TimeUnit.MILLISECONDS)
+
     val actorSystem = ActorSystem("RESTServer")
 
     val routes = Routes {
       case HttpRequest(request) => request match {
         case GET(PathSegments(action :: Nil)) & QueryString(param : String) if action.equals("factorial") =>
-          val factorialFuture = actorSystem.actorOf(Props[FactorialActor]) ? Integer.parseInt(param.split('=')(1))
-          factorialFuture.onComplete(x => x match {
-            case Success(result) => request.response.write(result.toString)
-            case _ => System.out.println("E")
-          })
-
-        case _ => request.channel.close()
+          actorSystem.actorOf(Props[FactorialActor]) ! (Integer.parseInt(param.split('=')(1)), request)
       }
-
-      case _ =>
     }
 
-    new WebServer(WebServerConfig(port = servicePort),
+    val webServer = new WebServer(WebServerConfig(port = servicePort),
       routes,
       actorSystem
-    ).start()
+    )
+
+    webServer.start()
+
+    Runtime.getRuntime.addShutdownHook(new Thread {
+      override def run { webServer.stop() }
+    })
   }
 }

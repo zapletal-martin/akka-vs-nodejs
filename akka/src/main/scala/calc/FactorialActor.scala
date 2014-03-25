@@ -1,13 +1,13 @@
 package calc
 
 import akka.actor.Actor
+import org.mashupbots.socko.events.HttpRequestEvent
 
 class FactorialActor extends Actor {
   override def receive: Actor.Receive = {
-    case mess : Int => sender ! factorial(mess)
+    case (n : Int, request : HttpRequestEvent) =>
+      request.response.write(factorial(n).toString)
       context.stop(self)
-
-    case _ =>
   }
 
   //TODO: Rewrite to tailrec

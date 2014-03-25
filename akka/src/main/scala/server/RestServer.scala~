@@ -1,0 +1,33 @@
+package server
+
+import java.net.ServerSocket
+import java.io.IOException
+import akka.actor.{Props, ActorSystem}
+import com.typesafe.config.ConfigFactory
+
+class RestServer {
+
+  def run (args: Array[String]): Unit = {
+    val config = ConfigFactory.load()
+
+    lazy val servicePort = config.getInt("service.port")
+
+      val webServer = new WebServer(WebServerConfig(), router.routes, system)
+
+      Runtime.getRuntime.addShutdownHook(new Thread {
+        override def run { webServer.stop() }
+      })
+
+      webServer.start()
+  }
+
+  val routes = val routes = Routes {
+        case HttpRequest(request) => request match {
+
+            case GET(PathSegments("/")) => {
+		   System.out.println("Bump")
+                }
+            }
+        }
+
+}

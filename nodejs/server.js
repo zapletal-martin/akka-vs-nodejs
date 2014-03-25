@@ -6,7 +6,7 @@ http.createServer(function (request, response) {
   var requestDetails = url.parse(request.url, true)
 
   if(requestDetails.pathname === '/factorial') {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+    //response.writeHead(200, {'Content-Type': 'text/plain'});
     response.end(calc.factorial(parseInt(requestDetails.query.param)).toString());
   }
 }).listen(1337, '127.0.0.1');

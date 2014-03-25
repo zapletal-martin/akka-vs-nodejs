@@ -59,32 +59,31 @@ Document Path:          /factorial?param=50
 Document Length:        22 bytes
 
 Concurrency Level:      1000
-Time taken for tests:   2.600 seconds
+Time taken for tests:   2.460 seconds
 Complete requests:      10000
 Failed requests:        0
 Write errors:           0
-Total transferred:      1230000 bytes
+Total transferred:      970000 bytes
 HTML transferred:       220000 bytes
-Requests per second:    3846.87 [#/sec] (mean)
-Time per request:       259.952 [ms] (mean)
-Time per request:       0.260 [ms] (mean, across all concurrent requests)
-Transfer rate:          462.07 [Kbytes/sec] received
+Requests per second:    4065.22 [#/sec] (mean)
+Time per request:       245.989 [ms] (mean)
+Time per request:       0.246 [ms] (mean, across all concurrent requests)
+Transfer rate:          385.08 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0   77 263.3      0    1004
-Processing:    13   70  28.4     63     605
-Waiting:       13   70  28.4     63     605
-Total:         49  147 270.9     64    1305
+Connect:        0   78 264.1      0    1002
+Processing:    17   40  39.2     28     469
+Waiting:       16   40  39.2     28     469
+Total:         26  118 271.2     28    1467
 
 Percentage of the requests served within a certain time (ms)
-  50%     64
-  66%     67
-  75%     73
-  80%     77
-  90%    157
-  95%   1067
-  98%   1082
-  99%   1091
- 100%   1305 (longest request)
-
+  50%     28
+  66%     31
+  75%     34
+  80%     39
+  90%    194
+  95%   1031
+  98%   1040
+  99%   1048
+ 100%   1467 (longest request)

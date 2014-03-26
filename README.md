@@ -5,7 +5,7 @@ Simple implementation of http server responsding on one resource '/factorial?par
 
 One implementation is in node.js and another one in scala/akka and using socko web server
 
-This is used for comparison of code, productivity and performance.
+This is used for comparison of code, productivity and performance. Please note this was done for my own interest and for a reliable (and fair) comparison of performance, much more thorough study would have to be done including different use cases.
 
 Results of trivial performance competition. Just really simple test using ab (in this case ab -n 100000 -c 1000 http://localhost:1338/factorial?param=50). The results should be kind of fair - same requests, responses, calculations done, same computer.
 

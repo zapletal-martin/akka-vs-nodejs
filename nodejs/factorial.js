@@ -1,9 +1,10 @@
 module.exports.factorial = function factorial (n) {
-   if(n === 0) {
-      return 0
-   } else if (n === 1) { 
-      return 1
-   } else {
-      return n * factorial(n - 1)
+   var product = 1;
+
+   while (n > 1) {
+      product *= n;
+      n--;           
    }
+    
+   return product;
 }

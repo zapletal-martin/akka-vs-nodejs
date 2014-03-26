@@ -1,0 +1,22 @@
+package calc
+
+import akka.actor.Actor
+import org.mashupbots.socko.events.HttpRequestEvent
+
+class FactorialActor extends Actor {
+  override def receive: Actor.Receive = {
+    case (n : Int, request : HttpRequestEvent) =>
+      request.response.write(factorial(n).toString)
+      context.stop(self)
+  }
+
+  //TODO: Rewrite to tailrec
+  def factorial (n : Int) : Int = {
+    n match {
+      case a if a < 2 => a
+      case _@a => a * factorial(a - 1)
+    }
+  }
+
+  def factorial2 (currentProduct : Long
+}

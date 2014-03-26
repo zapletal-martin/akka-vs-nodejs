@@ -24,7 +24,7 @@ class RestServer {
     val routes = Routes {
       case HttpRequest(request) => request match {
         case GET(PathSegments(action :: Nil)) & QueryString(param : String) if action.equals("factorial") =>
-          actorSystem.actorOf(Props[FactorialActor]) ! (Integer.parseInt(param.split('=')(1)), request)
+          actorSystem.actorOf(Props[FactorialActor]) ! (BigInt(param.split('=')(1)), request)
       }
     }
 

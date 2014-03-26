@@ -7,7 +7,7 @@ One implementation is in node.js and another one in scala/akka and using socko w
 
 This is used for comparison of code, productivity and performance.
 
-Results of trivial performance competition. Just really simple test using ab (in this case ab -n 10000 -c 1000 http://localhost:1337/factorial?param=50). The results should be kind of fair - same requests, responses, calculations done, same computer.
+Results of trivial performance competition. Just really simple test using ab (in this case ab -n 100000 -c 1000 http://localhost:1338/factorial?param=50). The results should be kind of fair - same requests, responses, calculations done, same computer.
 
 Akka
 -----------------------------------------------------------------------------------

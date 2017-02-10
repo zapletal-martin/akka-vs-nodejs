@@ -7,10 +7,11 @@ One implementation is in node.js and another one in scala/akka and using socko w
 
 This is used for comparison of code, productivity and performance. Please note this was done for my own interest and for a reliable (and fair) comparison of performance, much more thorough study would have to be done including different use cases.
 
-Results of trivial performance competition. Just really simple test using ab (in this case ab -n 100000 -c 1000 http://localhost:1338/factorial?param=50). The results should be kind of fair - same requests, responses, calculations done, same computer.
+Results of trivial performance competition. Just really simple test using ab (in this case `ab -n 100000 -c 1000 http://localhost:1338/factorial?param=50`). The results should be kind of fair - same requests, responses, calculations done, same computer.
 
 Akka
 -----------------------------------------------------------------------------------
+```
 Server Software:
 Server Hostname:        localhost
 Server Port:            1338
@@ -47,10 +48,12 @@ Percentage of the requests served within a certain time (ms)
   98%   1050
   99%   1272
  100%   7257 (longest request)
-
+```
 
 Node.js
 -------------------------------------------------------------------------------------------------
+
+```
 Server Software:
 Server Hostname:        localhost
 Server Port:            1337
@@ -87,3 +90,4 @@ Percentage of the requests served within a certain time (ms)
   98%   3059
   99%   3074
  100%  15095 (longest request)
+```
